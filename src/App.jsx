@@ -27,26 +27,26 @@ const WhatsappIcon = ({ size = 24, color = "currentColor" }) => (
   </svg>
 );
 import './styles.css';
-import logoImg from './assets/capilo logo.png';
+import logoImg from './assets/capilo-logo.png';
 import heroVideo from './assets/capiello-video.mp4';
 import heroImg from './assets/capiello-hero-img.png';
-import aboutImg from './assets/beautyphotos (8).jpg';
-import serviceImg1 from './assets/beautyphotos (3).jpg';
-import serviceImg2 from './assets/beautyphotos (10).jpg';
-import serviceImg3 from './assets/beautyphotos (11).jpg';
-import serviceImg4 from './assets/beautyphotos (1).jpg';
-import serviceImg5 from './assets/beautyphotos (2).jpg';
-import serviceImg6 from './assets/beautyphotos (4).jpg';
-import serviceImg7 from './assets/beautyphotos (5).jpg';
+import aboutImg from './assets/beautyphotos-8.jpg';
+import serviceImg1 from './assets/beautyphotos-3.jpg';
+import serviceImg2 from './assets/beautyphotos-10.jpg';
+import serviceImg3 from './assets/beautyphotos-11.jpg';
+import serviceImg4 from './assets/beautyphotos-1.jpg';
+import serviceImg5 from './assets/beautyphotos-2.jpg';
+import serviceImg6 from './assets/beautyphotos-4.jpg';
+import serviceImg7 from './assets/beautyphotos-5.jpg';
 import serviceImg8 from './assets/bride-makeover.jpg';
-import galleryImg1 from './assets/gallery (1).jpg';
-import galleryImg2 from './assets/gallery (2).jpg';
-import galleryImg3 from './assets/gallery (3).jpg';
-import galleryImg4 from './assets/gallery (4).jpg';
-import galleryImg5 from './assets/gallery (5).jpg';
-import galleryImg6 from './assets/gallery (12).jpg';
-import galleryImg7 from './assets/gallery (13).jpg';
-import galleryImg8 from './assets/gallery (14).jpg';
+import galleryImg1 from './assets/gallery-1.jpg';
+import galleryImg2 from './assets/gallery-2.jpg';
+import galleryImg3 from './assets/gallery-3.jpg';
+import galleryImg4 from './assets/gallery-4.jpg';
+import galleryImg5 from './assets/gallery-5.jpg';
+import galleryImg6 from './assets/gallery-12.jpg';
+import galleryImg7 from './assets/gallery-13.jpg';
+import galleryImg8 from './assets/gallery-14.jpg';
 import groomMakeoverImg from './assets/groom-makeover.webp';
 
 // --- Data Constants ---
