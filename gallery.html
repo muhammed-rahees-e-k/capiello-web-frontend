@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery - Capiello Beauty Lounge</title>
+    <link rel="icon" type="image/png" href="./src/assets/title-image.png" />
+    <meta name="description" content="Explore our portfolio of beauty transformations and stunning results." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600&display=swap');
+
+      .desktop-only { display: flex ; }
+      .mobile-only { display: none !important; }
+
+      @media (max-width: 1023px) {
+        .desktop-only { display: none !important; }
+        .mobile-only { display: flex !important; }
+      }
+
+      :root {
+        --bg-primary: #E1D9CB;
+        --bg-secondary: #F5F3EF;
+        --bg-dark: #312335;
+        --text-primary: #312335;
+        --text-secondary: #5D545F;
+        --text-light: #F5F3EF;
+        --accent-purple: #925094;
+        --accent-gold: #c1b69a;
+        --max-width: 1280px;
+        --transition-base: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        --font-serif: 'Lora', serif;
+        --font-sans: 'Inter', sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        font-family: var(--font-sans);
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 60px;
+        background: rgba(225, 217, 203, 0.9);
+        backdrop-filter: blur(16px);
+      }
+
+      .logo {
+        height: 55px;
+        width: auto;
+      }
+
+      .site-nav {
+        display: flex;
+        gap: 32px;
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+
+      .site-nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .site-nav a:hover {
+        color: var(--accent-purple);
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 30px;
+        border-radius: 999px;
+        background: var(--accent-purple);
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 32px;
+        margin-top: 80px;
+      }
+
+      .footer-grid h4 {
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+      }
+
+      .footer-grid p,
+      .footer-grid a {
+        color: rgba(255,255,255,0.78);
+        line-height: 1.8;
+      }
+
+      .footer-grid a {
+        text-decoration: none;
+      }
+
+      .footer-bottom {
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255,255,255,0.12);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        color: rgba(255,255,255,0.65);
+        font-size: 0.95rem;
+      }
+
+      .service-footer {
+        background: var(--bg-dark);
+        color: var(--text-light);
+        padding: 80px 0 60px;
+      }
+
+      .gallery-section {
+        padding: 100px 0;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        margin-top: 60px;
+      }
+
+      .gallery-item {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .eyebrow-pill {
+        display: inline-block;
+        padding: 7px 16px;
+        border: 1px solid rgba(45, 45, 45, 0.15);
+        border-radius: 999px;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--text-secondary);
+        margin-bottom: 28px;
+      }
+
+      .serif-text {
+        font-family: 'Lora', serif;
+        font-weight: 400;
+        line-height: 1.15;
+      }
+
+      h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 0.5em; }
+      h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 0.5em; }
+
+      .gallery-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        margin-bottom: 20px;
+      }
+
+      .gallery-description {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-primary);
+        padding: 8px;
+        position: relative;
+        z-index: 1000;
+      }
+      
+      .site-nav.active {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(245, 243, 239, 0.98);
+        backdrop-filter: blur(16px);
+        padding: 40px 24px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        text-align: center;
+      }
+
+      .mobile-book-btn {
+        display: none;
+        margin-top: 16px;
+      }
+
+      @media (max-width: 1024px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 24px;
+        }
+
+        .site-header {
+          padding: 16px 24px;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          gap: 16px;
+        }
+
+        .site-header > .button {
+          display: none;
+        }
+
+        .site-nav {
+          display: none;
+          gap: 24px;
+        }
+
+        .mobile-menu-toggle {
+          display: inline-flex;
+          align-items: center;
+        }
+
+        .gallery-grid {
+          gap: 16px;
+        }
+
+        .gallery-title {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <img src="./src/assets/capilo logo.png" alt="Capiello Beauty Lounge" class="logo" />
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <a class="button desktop-only" href="contact.html">Book Now</a>
+        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="container gallery-section">
+        <div class="section-header">
+          <span class="eyebrow-pill">GALLERY</span>
+          <h1 class="serif-text gallery-title">Our Masterpieces</h1>
+          <p class="gallery-description">Explore our portfolio of curated beauty transformations. From elegant bridal makeovers to precise designer hair cuts, every result reflects our commitment to perfection.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery (1).jpg" alt="Beauty work 1" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery (2).jpg" alt="Beauty work 2" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery (3).jpg" alt="Beauty work 3" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery (4).jpg" alt="Beauty work 4" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery (5).jpg" alt="Beauty work 5" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery (6).jpg" alt="Beauty work 6" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery (7).jpg" alt="Beauty work 7" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery (8).jpg" alt="Beauty work 8" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery (9).jpg" alt="Beauty work 9" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery (10).jpg" alt="Beauty work 10" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery (12).jpg" alt="Beauty work 12" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery (13).jpg" alt="Beauty work 13" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery (14).jpg" alt="Beauty work 14" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-15.jpg" alt="Beauty work 15" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-16.jpg" alt="Beauty work 16" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-17.jpg" alt="Beauty work 17" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-18.jpg" alt="Beauty work 18" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-19.jpg" alt="Beauty work 19" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-20.jpg" alt="Beauty work 20" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-21.jpg" alt="Beauty work 21" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-22.jpg" alt="Beauty work 22" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-23.jpg" alt="Beauty work 23" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-24.jpg" alt="Beauty work 24" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-25.jpg" alt="Beauty work 25" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-26.jpg" alt="Beauty work 26" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-27.jpg" alt="Beauty work 27" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-28.jpg" alt="Beauty work 28" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-29.jpg" alt="Beauty work 29" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-30.jpg" alt="Beauty work 30" />
+          </div>
+          <div class="gallery-item">
+            <img src=".\src\assets\gallery-31.jpg" alt="Beauty work 31" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="service-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <img src="./src/assets/capilo logo.png" alt="Capiello Beauty Lounge" class="logo" />
+            <p style="margin-top: 24px; max-width: 320px;">Capiello Beauty Lounge: Where professionalism meets pure elegance. Available for salon and luxury home services.</p>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <a href="index.html">Home</a><br />
+            <a href="services.html">Services</a><br />
+            <a href="gallery.html">Gallery</a><br />
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <p>hello@capiellobeauty.com</p>
+            <p>Pandikkad, Malappuram</p>
+            <p>Kerala, India 676521</p>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <div style="display: flex; gap: 16px;">
+              <a href="https://www.facebook.com/share/1GqV4CSm1G/" target="_blank" rel="noopener noreferrer" style="color: var(--text-light);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+              <a href="https://www.instagram.com/capiello_beauty_lounge_?igsh=MWszMDZxYmpvNm9kcA==" target="_blank" rel="noopener noreferrer" style="color: var(--text-light);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+              <a href="https://youtube.com/@sidhiquecapiello?si=nVNxVwySOICFMF0f" target="_blank" rel="noopener noreferrer" style="color: var(--text-light);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.1c.3-1.1 1.2-2 2.3-2.3C7.4 4.1 12 4.1 12 4.1s4.6 0 7.2.7c1.1.3 2 1.2 2.3 2.3.7 2.7.7 7.2.7 7.2s0 4.6-.7 7.2c-.3 1.1-1.2 2-2.3 2.3-2.6.7-7.2.7-7.2.7s-4.6 0-7.2-.7c-1.1-.3-2-1.2-2.3-2.3-.7-2.7-.7-7.2-.7-7.2s0-4.6.7-7.2"/><path d="m10 15 5-3-5-3z"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 Capiello Beauty Lounge. All rights reserved.</p>
+          <p>Privacy Policy • Terms of Service</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const nav = document.querySelector('.site-nav');
+      if(toggle && nav) {
+        toggle.addEventListener('click', () => {
+          nav.classList.toggle('active');
+        });
+      }
+    </script>
+  </body>
+</html>

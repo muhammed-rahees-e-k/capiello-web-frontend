@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services - Capiello Beauty Lounge</title>
+    <link rel="icon" type="image/png" href="./src/assets/title-image.png" />
+    <meta name="description" content="Professional beauty services including consultations, treatments, and glam makeovers." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600&display=swap');
+
+      .desktop-only { display: flex !important; }
+      .mobile-only { display: none !important; }
+
+      @media (max-width: 1023px) {
+        .desktop-only { display: none !important; }
+        .mobile-only { display: flex !important; }
+      }
+
+      :root {
+        --bg-primary: #E1D9CB;
+        --bg-secondary: #F5F3EF;
+        --bg-dark: #312335;
+        --text-primary: #312335;
+        --text-secondary: #5D545F;
+        --text-light: #F5F3EF;
+        --accent-purple: #925094;
+        --accent-gold: #c1b69a;
+        --max-width: 1280px;
+        --transition-base: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        --font-serif: 'Lora', serif;
+        --font-sans: 'Inter', sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        font-family: var(--font-sans);
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 60px;
+        background: rgba(225, 217, 203, 0.95);
+        backdrop-filter: blur(16px);
+      }
+
+      .logo {
+        height: 55px;
+        width: auto;
+      }
+
+      .site-nav {
+        display: flex;
+        gap: 32px;
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+
+      .site-nav a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .site-nav a:hover {
+        color: var(--accent-purple);
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 30px;
+        border-radius: 999px;
+        background: var(--accent-purple);
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .hero-section {
+        padding: 120px 0 60px;
+        background: linear-gradient(135deg, #f8f3ec 0%, #e7dccd 100%);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .hero-copy h1 {
+        font-family: 'Lora', serif;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        margin-bottom: 24px;
+        color: var(--text-primary);
+        line-height: 1.15;
+      }
+
+      .hero-copy p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        margin-bottom: 32px;
+        max-width: 520px;
+        line-height: 1.8;
+      }
+
+      .highlight-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+        margin-top: 40px;
+      }
+
+      .highlight-card {
+        background: #fff;
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: 0 18px 50px rgba(0,0,0,0.06);
+      }
+
+      .highlight-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+      }
+
+      .highlight-card p {
+        color: var(--text-secondary);
+        line-height: 1.7;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-top: 60px;
+      }
+
+      .service-card {
+        background: rgba(255,255,255,0.92);
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 28px 60px rgba(0,0,0,0.12);
+      }
+
+      .service-card img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+      }
+
+      .service-content {
+        padding: 28px;
+      }
+
+      .service-content h3 {
+        font-family: 'Lora', serif;
+        font-size: 1.6rem;
+        margin-bottom: 14px;
+      }
+
+      .service-content p {
+        color: var(--text-secondary);
+        margin-bottom: 18px;
+        line-height: 1.75;
+      }
+
+      .service-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 8px;
+      }
+
+      .service-list li {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+      }
+
+      .service-list li::before {
+        content: '•';
+        color: var(--accent-gold);
+        margin-right: 10px;
+      }
+
+      .service-meta {
+        margin-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .service-price {
+        color: var(--accent-purple);
+        font-weight: 700;
+      }
+
+      .service-footer {
+        background: var(--bg-dark);
+        color: var(--text-light);
+        padding: 80px 0 60px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 32px;
+      }
+
+      .footer-grid h4 {
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+      }
+
+      .footer-grid p,
+      .footer-grid a {
+        color: rgba(255,255,255,0.78);
+        line-height: 1.8;
+      }
+
+      .footer-grid a {
+        text-decoration: none;
+      }
+
+      .footer-bottom {
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255,255,255,0.12);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        color: rgba(255,255,255,0.65);
+        font-size: 0.95rem;
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text-primary);
+        padding: 8px;
+        position: relative;
+        z-index: 1000;
+      }
+      
+      .site-nav.active {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(245, 243, 239, 0.98);
+        backdrop-filter: blur(16px);
+        padding: 40px 24px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        text-align: center;
+      }
+
+      .mobile-book-btn {
+        display: none;
+        margin-top: 16px;
+      }
+
+      @media (max-width: 1024px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .highlight-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 24px;
+        }
+
+        .site-header {
+          padding: 16px 24px;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          gap: 16px;
+        }
+
+        .site-header > .button {
+          display: none;
+        }
+
+        .site-nav {
+          display: none;
+          gap: 24px;
+        }
+
+        .mobile-menu-toggle {
+          display: inline-flex;
+          align-items: center;
+        }
+
+        .hero-copy h1 {
+          font-size: 3rem;
+        }
+
+        .services-grid {
+          gap: 18px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <img src="./src/assets/capilo logo.png" alt="Capilo Logo" class="logo" />
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <a class="button desktop-only" href="contact.html">Book Now</a>
+        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <style>
+        .catalog-section {
+          padding: 80px 0;
+          min-height: 50vh;
+        }
+
+        .section-header {
+          text-align: center;
+          margin-bottom: 60px;
+        }
+
+        .eyebrow-pill {
+          display: inline-block;
+          padding: 6px 16px;
+          border-radius: 999px;
+          background: rgba(146, 80, 148, 0.1);
+          color: var(--accent-purple);
+          font-size: 0.85rem;
+          font-weight: 600;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          margin-bottom: 16px;
+        }
+
+        .category-title {
+          font-family: var(--font-serif);
+          font-size: clamp(2rem, 5vw, 3.5rem);
+          color: var(--text-primary);
+          margin-bottom: 16px;
+        }
+
+        .catalog-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 24px;
+        }
+
+        .catalog-item {
+          position: relative;
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .catalog-label {
+          position: absolute;
+          bottom: 12px;
+          left: 12px;
+          background: rgba(0, 0, 0, 0.85);
+          color: #fff;
+          padding: 4px 10px;
+          border-radius: 4px;
+          font-size: 0.7rem;
+          font-weight: 600;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+          z-index: 2;
+        }
+
+        .catalog-item:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+        }
+
+        .catalog-item img {
+          width: 100%;
+          height: auto;
+          display: block;
+          object-fit: cover;
+          cursor: pointer;
+        }
+
+        .image-modal {
+          display: none;
+          position: fixed;
+          z-index: 9999;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.9);
+          justify-content: center;
+          align-items: center;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .image-modal.show {
+          display: flex;
+          opacity: 1;
+        }
+
+        .modal-content {
+          max-width: 90%;
+          max-height: 90vh;
+          border-radius: 8px;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+          object-fit: contain;
+          transform: scale(0.5);
+          transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .image-modal.show .modal-content {
+          transform: scale(1);
+        }
+
+        .close-modal {
+          position: absolute;
+          top: 30px;
+          right: 40px;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 40px;
+          font-family: sans-serif;
+          cursor: pointer;
+          transition: color 0.3s;
+          line-height: 1;
+        }
+
+        .close-modal:hover {
+          color: white;
+        }
+
+        @media (max-width: 1024px) {
+          .catalog-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 600px) {
+          .catalog-grid {
+            grid-template-columns: 1fr;
+          }
+          .category-title {
+            font-size: 2.2rem;
+          }
+        }
+      </style>
+
+      <section class="catalog-section">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow-pill">CATALOG</span>
+            <h1 class="category-title">Our Services</h1>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.7;">Step into a world of pure indulgence. From high-glam makeovers and precision grooming to rejuvenating spa rituals, every service is crafted to enhance your natural beauty and restore your inner calm.</p>
+          </div>
+          
+          <div class="catalog-grid">
+            <div class="catalog-item">
+              <img src="./src/assets/female-catelog-1.jpg" alt="Female Catalog 1" />
+              <div class="catalog-label">Female</div>
+            </div>
+            <div class="catalog-item">
+              <img src="./src/assets/female-catelog-2.jpg" alt="Female Catalog 2" />
+              <div class="catalog-label">Female</div>
+            </div>
+            <div class="catalog-item">
+              <img src="./src/assets/female-catelog-3.jpg" alt="Female Catalog 3" />
+              <div class="catalog-label">Female</div>
+            </div>
+            <div class="catalog-item">
+              <img src="./src/assets/female-catelog-4.jpg" alt="Female Catalog 4" />
+              <div class="catalog-label">Female</div>
+            </div>
+            <div class="catalog-item">
+              <img src="./src/assets/male-catelog-1.jpg" alt="Male Catalog 1" />
+              <div class="catalog-label">Male</div>
+            </div>
+            <div class="catalog-item">
+              <img src="./src/assets/male-catelog-2.jpg" alt="Male Catalog 2" />
+              <div class="catalog-label">Male</div>
+            </div>
+            <div class="catalog-item">
+              <img src="./src/assets/gym-1.jpg" alt="Gym Catalog" />
+              <div class="catalog-label">Gym</div>
+            </div>
+            <div class="catalog-item">
+              <img src="./src/assets/spa-1.jpg" alt="Spa Catalog" />
+              <div class="catalog-label">Spa</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="imageModal" class="image-modal">
+      <span class="close-modal">&times;</span>
+      <img class="modal-content" id="zoomedImage" />
+    </div>
+
+    <footer class="service-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <img src="./src/assets/capilo logo.png" alt="Capilo Logo" class="logo" />
+            <p style="margin-top: 24px; max-width: 320px;">Capiello Beauty Lounge: Where professionalism meets pure elegance. Available for salon and luxury home services.</p>
+          </div>
+          <div>
+            <h4>Explore</h4>
+            <a href="index.html">Home</a><br />
+            <a href="services.html">Services</a><br />
+            <a href="gallery.html">Gallery</a><br />
+            <a href="contact.html">Contact</a>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <p>hello@capilobeauty.com</p>
+            <p>+1 234 567 890</p>
+            <p>123 Beauty Lane, City</p>
+          </div>
+          <div>
+            <h4>Connect</h4>
+            <div style="display: flex; gap: 16px;">
+              <a href="https://www.facebook.com/share/1GqV4CSm1G/" target="_blank" rel="noopener noreferrer" style="color: var(--text-light);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+              <a href="https://www.instagram.com/capiello_beauty_lounge_?igsh=MWszMDZxYmpvNm9kcA==" target="_blank" rel="noopener noreferrer" style="color: var(--text-light);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+              <a href="https://youtube.com/@sidhiquecapiello?si=nVNxVwySOICFMF0f" target="_blank" rel="noopener noreferrer" style="color: var(--text-light);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.1c.3-1.1 1.2-2 2.3-2.3C7.4 4.1 12 4.1 12 4.1s4.6 0 7.2.7c1.1.3 2 1.2 2.3 2.3.7 2.7.7 7.2.7 7.2s0 4.6-.7 7.2c-.3 1.1-1.2 2-2.3 2.3-2.6.7-7.2.7-7.2.7s-4.6 0-7.2-.7c-1.1-.3-2-1.2-2.3-2.3-.7-2.7-.7-7.2-.7-7.2s0-4.6.7-7.2"/><path d="m10 15 5-3-5-3z"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 Capiello Beauty Lounge. All rights reserved.</p>
+          <p>Privacy Policy • Terms of Service</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const nav = document.querySelector('.site-nav');
+      if(toggle && nav) {
+        toggle.addEventListener('click', () => {
+          nav.classList.toggle('active');
+        });
+      }
+
+      // Image modal zoom logic
+      const modal = document.getElementById("imageModal");
+      const zoomedImg = document.getElementById("zoomedImage");
+      const closeBtn = document.querySelector(".close-modal");
+      const catalogImages = document.querySelectorAll(".catalog-item img");
+
+      catalogImages.forEach(img => {
+        img.addEventListener("click", function() {
+          modal.style.display = "flex";
+          setTimeout(() => {
+            modal.classList.add("show");
+          }, 10);
+          zoomedImg.src = this.src;
+          zoomedImg.alt = this.alt;
+        });
+      });
+
+      const closeModal = () => {
+        modal.classList.remove("show");
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, 300);
+      };
+
+      closeBtn.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+    </script>
+  </body>
+</html>
