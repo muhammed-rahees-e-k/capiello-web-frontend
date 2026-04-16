@@ -854,9 +854,13 @@ section {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
   gap: 50px;
   margin-bottom: 60px;
+}
+
+.footer-grid p, .footer-grid a, .footer-brand p {
+  word-break: break-word;
 }
 
 .footer-brand p {
@@ -931,8 +935,8 @@ section {
   }
 
   .footer-grid {
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
   }
 }
 

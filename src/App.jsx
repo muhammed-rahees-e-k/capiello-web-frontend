@@ -14,7 +14,8 @@ import {
   Target,
   Crown,
   Scissors,
-  Home
+  Home,
+  User
 } from 'lucide-react';
 
 const Facebook = ({ size = 24, color = "currentColor" }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>;
@@ -732,17 +733,14 @@ export default function App() {
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1, duration: 0.6, ease: 'easeOut' }}
                 >
-                  {item.photo ? (
-                    <img src={item.photo} alt={item.name} className="customer-photo" />
-                  ) : (
-                    <div className="customer-photo" />
-                  )}
+                  <div className="customer-photo" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-primary)' }}>
+                    <User size={24} color="var(--accent-purple)" />
+                  </div>
                   <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                     “{item.text}”
                   </p>
                   <div style={{ marginTop: '16px' }}>
                     <h4 style={{ margin: 0, fontFamily: 'var(--font-serif)', fontSize: '1.2rem' }}>{item.name}</h4>
-                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>{item.age} years old</span>
                   </div>
                 </motion.div>
               ))}
@@ -769,6 +767,15 @@ export default function App() {
                   <a href="services.html">Services</a>
                   <a href="gallery.html">Gallery</a>
                   <a href="contact.html">Contact</a>
+                </div>
+              </div>
+              <div>
+                <h4 style={{ marginBottom: '24px', fontSize: '1.1rem' }}>Contact</h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', opacity: 0.7 }}>
+                  <p style={{ margin: 0 }}>capiellobeautylounge78@gmail.com</p>
+                  <p style={{ margin: 0 }}>+91 984 690 4164 (Gents)</p>
+                  <p style={{ margin: 0 }}>+91 894 378 0108 (Ladies)</p>
+                  <p style={{ margin: 0 }}>Pandikkad, Kerala 676521</p>
                 </div>
               </div>
               <div>
