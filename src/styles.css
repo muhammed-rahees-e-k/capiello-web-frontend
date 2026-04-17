@@ -1310,3 +1310,79 @@ section {
   50% { transform: translateY(-15px); }
   100% { transform: translateY(0px); }
 }
+
+/* =====================
+   LADIES GYM BANNER
+   ===================== */
+.ladies-gym-banner-card {
+  background: var(--bg-secondary);
+  border-radius: 24px;
+  padding: 40px 60px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.ladies-gym-banner-content {
+  flex: 1 1 400px;
+}
+
+.ladies-gym-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.ladies-gym-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.ladies-gym-banner-image-wrapper {
+  position: relative;
+  width: 260px;
+  height: 320px;
+  flex-shrink: 0;
+  margin: 20px 20px 0 0;
+}
+
+@media (max-width: 1024px) {
+  .ladies-gym-banner-card {
+    padding: 40px;
+    justify-content: center;
+    text-align: center;
+  }
+  .ladies-gym-banner-content {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ladies-gym-banner-content p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ladies-gym-banner-actions {
+    justify-content: center;
+  }
+  .ladies-gym-banner-image-wrapper {
+    margin: 40px 0 0 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .ladies-gym-banner-card {
+    padding: 32px 24px;
+  }
+  .ladies-gym-banner-image-wrapper {
+    width: 100%;
+    max-width: 320px;
+    height: 380px;
+  }
+}

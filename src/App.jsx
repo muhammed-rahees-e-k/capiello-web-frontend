@@ -36,7 +36,7 @@ import serviceImg2 from './assets/beautyphotos-10.jpg';
 import serviceImg3 from './assets/beautyphotos-11.jpg';
 import serviceImg4 from './assets/beautyphotos-1.jpg';
 import serviceImg5 from './assets/beautyphotos-2.jpg';
-import serviceImg6 from './assets/beautyphotos-4.jpg';
+import serviceImg6 from './assets/spa.jpg';
 import serviceImg7 from './assets/beautyphotos-5.jpg';
 import serviceImg8 from './assets/bride-makeover.jpg';
 import galleryImg1 from './assets/gallery-1.jpg';
@@ -47,7 +47,9 @@ import galleryImg5 from './assets/gallery-5.jpg';
 import galleryImg6 from './assets/gallery-12.jpg';
 import galleryImg7 from './assets/gallery-13.jpg';
 import galleryImg8 from './assets/gallery-14.jpg';
-import groomMakeoverImg from './assets/groom-makeover.webp';
+import brideSectionImg from './assets/bride section.jpeg';
+import gymImg from './assets/gym-1.jpg';
+import ladiesGymImg from './assets/ladies-gym.jpg';
 
 // --- Data Constants ---
 
@@ -514,8 +516,8 @@ export default function App() {
                   <motion.img 
                     whileHover={{ scale: 1.1 }} 
                     transition={{ duration: 0.8 }} 
-                    src={groomMakeoverImg} 
-                    alt="Groom makeover" 
+                    src={brideSectionImg} 
+                    alt="Bride makeover" 
                   />
                 </motion.div>
 
@@ -616,6 +618,48 @@ export default function App() {
             <a className="button" href="services.html">View All Services</a>
           </div>
         </section>
+
+        {/* --- Ladies Gym Banner --- */}
+        <section className="container" style={{ padding: '0 0 100px' }}>
+          <div className="ladies-gym-banner-card">
+            <div className="ladies-gym-banner-content">
+              <div className="ladies-gym-eyebrow">
+                 <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-purple)' }}></div>
+                 <span style={{ fontSize: '0.85rem', letterSpacing: '2px', textTransform: 'uppercase', fontWeight: '600', color: 'var(--text-secondary)' }}>Fitness & Wellbeing</span>
+              </div>
+              <h2 className="serif-text" style={{ fontSize: 'clamp(2.2rem, 6vw, 2.8rem)', marginBottom: '12px', color: 'var(--text-primary)' }}>Exclusive Ladies Gym</h2>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '450px', margin: '0 0 32px', lineHeight: '1.6' }}>
+                Step into our premium, entirely private fitness facility designed just for women. Focus on your health goals in a comfortable and supportive environment.
+              </p>
+              <div className="ladies-gym-banner-actions">
+                <motion.a 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  href="https://wa.me/919846904176" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', background: '#25D366', color: '#fff', padding: '14px 28px', borderRadius: '999px', textDecoration: 'none', fontWeight: '600', fontSize: '1rem', boxShadow: '0 8px 16px rgba(37, 211, 102, 0.2)' }}
+                >
+                  <WhatsappIcon size={20} color="#fff" />
+                  Explore Packages
+                </motion.a>
+              </div>
+            </div>
+            
+            {/* Creative Image Design */}
+            <div className="ladies-gym-banner-image-wrapper">
+              {/* Decorative accent behind */}
+              <div style={{ position: 'absolute', top: -15, right: -15, width: '100%', height: '100%', borderRadius: '150px 150px 20px 20px', border: '2px dashed var(--accent-purple)', opacity: 0.3 }}></div>
+              <div style={{ position: 'absolute', bottom: -15, left: -15, width: '100%', height: '100%', borderRadius: '150px 150px 20px 20px', background: 'var(--accent-gold)', opacity: 0.15 }}></div>
+              
+              {/* Main Image */}
+              <div style={{ position: 'absolute', inset: 0, borderRadius: '150px 150px 20px 20px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.15)', zIndex: 2 }}>
+                <img src={ladiesGymImg} alt="Ladies Gym" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+            </div>
+          </div>
+        </section>
+
 
         {/* --- Gallery --- */}
         <section id="gallery" style={{ background: 'var(--bg-secondary)', padding: '140px 0' }}>
