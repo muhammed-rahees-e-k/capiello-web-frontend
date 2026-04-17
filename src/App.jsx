@@ -39,6 +39,7 @@ import serviceImg5 from './assets/beautyphotos-2.jpg';
 import serviceImg6 from './assets/spa.jpg';
 import serviceImg7 from './assets/beautyphotos-5.jpg';
 import serviceImg8 from './assets/bride-makeover.jpg';
+import groomMakeupImg from './assets/groom-makeup.jpeg';
 import galleryImg1 from './assets/gallery-1.jpg';
 import galleryImg2 from './assets/gallery-2.jpg';
 import galleryImg3 from './assets/gallery-3.jpg';
@@ -154,7 +155,9 @@ const processSteps = [
 // --- Sub-components ---
 
 const Logo = () => (
-  <img src={logoImg} alt="Capiello Beauty Lounge" style={{ height: '55px', width: 'auto', display: 'block' }} />
+  <a href="index.html" style={{ display: 'block' }}>
+    <img src={logoImg} alt="Capiello Beauty Lounge" style={{ height: '55px', width: 'auto', display: 'block' }} />
+  </a>
 );
 
 const SectionHeader = ({ eyebrow, title, description, dark = false }) => (
@@ -501,7 +504,7 @@ export default function App() {
                   <motion.img 
                     whileHover={{ scale: 1.05 }} 
                     transition={{ duration: 0.8 }} 
-                    src={serviceImg8} 
+                    src={groomMakeupImg} 
                     alt="Bridal elegance" 
                   />
                 </motion.div>
@@ -840,6 +843,35 @@ export default function App() {
             </div>
           </div>
         </footer>
+        <AnimatePresence>
+          {isScrolled && (
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              style={{
+                position: 'fixed',
+                bottom: '30px',
+                right: '30px',
+                width: '50px',
+                height: '50px',
+                borderRadius: '50%',
+                background: 'var(--accent-purple)',
+                color: '#fff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                border: 'none',
+                cursor: 'pointer',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                zIndex: 999
+              }}
+            >
+              <ChevronUp size={24} />
+            </motion.button>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

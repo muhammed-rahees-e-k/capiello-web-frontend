@@ -421,6 +421,27 @@
         transform: translateY(-1px);
       }
 
+      .modal-close-icon {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: color 0.3s ease, transform 0.3s ease;
+        padding: 4px;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-close-icon:hover {
+        color: var(--accent-purple);
+        transform: scale(1.1);
+      }
+
       /* Animated Checkmark */
       .checkmark {
         width: 48px;
@@ -529,11 +550,46 @@
           padding: 32px 24px;
         }
       }
+
+      /* Scroll To Top Button */
+      .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--accent-purple);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 9999;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s, background 0.3s ease;
+      }
+
+      .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .scroll-to-top:hover {
+        transform: translateY(-3px);
+      }
     </style>
   </head>
   <body>
     <header class="site-header">
-      <img src="./src/assets/capilo-logo.png" alt="Capilo Logo" class="logo" />
+      <a href="index.html" style="display: block;">
+        <img src="./src/assets/capilo-logo.png" alt="Capilo Logo" class="logo" />
+      </a>
       <nav class="site-nav">
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
@@ -690,8 +746,21 @@
         </div>
       </div>
     </footer>
-
+    <button class="scroll-to-top" aria-label="Scroll to top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
     <script>
+      const scrollToTopBtn = document.querySelector('.scroll-to-top');
+      if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 200) {
+            scrollToTopBtn.classList.add('visible');
+          } else {
+            scrollToTopBtn.classList.remove('visible');
+          }
+        });
+      }
+
       const form = document.getElementById('contact-form');
       const successMessage = document.getElementById('success-message');
 
@@ -750,35 +819,45 @@
         }
       });
 
-      // Close modal logic
-      const closeModalBtn = document.getElementById('close-modal');
-      const successModal = document.getElementById('success-modal');
-      
-      if(closeModalBtn && successModal) {
-        closeModalBtn.addEventListener('click', () => {
-          successModal.classList.remove('active');
-        });
+      // Close modal and mobile menu logic
+      document.addEventListener('DOMContentLoaded', () => {
+        const closeModalBtn = document.getElementById('close-modal');
+        const closeModalIcon = document.getElementById('close-modal-icon');
+        const successModal = document.getElementById('success-modal');
         
-        // Optional: Close on overlay click
-        successModal.addEventListener('click', (e) => {
-          if(e.target === successModal) {
-            successModal.classList.remove('active');
-          }
-        });
-      }
+        const closeModal = () => {
+          successModal.classList.remove('active');
+          window.location.href = 'contact.html';
+        };
 
-      // Mobile menu toggle
-      const toggle = document.querySelector('.mobile-menu-toggle');
-      const nav = document.querySelector('.site-nav');
-      if(toggle && nav) {
-        toggle.addEventListener('click', () => {
-          nav.classList.toggle('active');
-        });
-      }
+        if(successModal) {
+          if(closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+          if(closeModalIcon) closeModalIcon.addEventListener('click', closeModal);
+          
+          // Optional: Close on overlay click
+          successModal.addEventListener('click', (e) => {
+            if(e.target === successModal) {
+              closeModal();
+            }
+          });
+        }
+
+        // Mobile menu toggle
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        const nav = document.querySelector('.site-nav');
+        if(toggle && nav) {
+          toggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+          });
+        }
+      });
     </script>
     <!-- Success Modal -->
     <div class="modal-overlay" id="success-modal">
       <div class="modal-card">
+        <button class="modal-close-icon" id="close-modal-icon" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
         <div class="success-icon-wrap">
           <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
             <path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>

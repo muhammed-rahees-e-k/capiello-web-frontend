@@ -290,11 +290,46 @@
           grid-template-columns: 1fr;
         }
       }
+
+      /* Scroll To Top Button */
+      .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--accent-purple);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 9999;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s, background 0.3s ease;
+      }
+
+      .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .scroll-to-top:hover {
+        transform: translateY(-3px);
+      }
     </style>
   </head>
   <body>
     <header class="site-header">
-      <img src="./src/assets/capilo-logo.png" alt="Capiello Beauty Lounge" class="logo" />
+      <a href="index.html" style="display: block;">
+        <img src="./src/assets/capilo-logo.png" alt="Capiello Beauty Lounge" class="logo" />
+      </a>
       <nav class="site-nav">
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
@@ -464,7 +499,21 @@
         </div>
       </div>
     </footer>
+    <button class="scroll-to-top" aria-label="Scroll to top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
     <script>
+      const scrollToTopBtn = document.querySelector('.scroll-to-top');
+      if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 200) {
+            scrollToTopBtn.classList.add('visible');
+          } else {
+            scrollToTopBtn.classList.remove('visible');
+          }
+        });
+      }
+
       const toggle = document.querySelector('.mobile-menu-toggle');
       const nav = document.querySelector('.site-nav');
       if(toggle && nav) {
